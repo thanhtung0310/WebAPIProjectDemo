@@ -50,7 +50,7 @@ namespace WebAPIProjectDemo.Controllers
         //        case "fourth floor":
         //            return Request.CreateResponse(HttpStatusCode.OK, entities.employees.Where(e => e.emp_position == "fourth floor").ToList());
         //        default:
-        //            return Request.CreateResponse(HttpStatusCode.BadRequest, "Value for position must be ALL, Ground/Second/Third/Fourth Floor." + position + " is Invalid!!");
+        //            return Request.CreateResponse(HttpStatusCode.BadRequest, "Value for position must be ALL, Ground/Second/Third/Fourth Floor. " + position + " is Invalid!!");
         //    }
         //}
 

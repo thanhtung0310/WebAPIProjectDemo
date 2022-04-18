@@ -9,6 +9,13 @@ namespace WebAPIProjectDemo.Controllers
 {
     public class ValuesController : ApiController
     {
+        /// <summary>
+        /// Get All the values
+        /// </summary>
+        /// <remarks>
+        /// Get All the String Values
+        /// </remarks>
+        /// <returns></returns>
         // GET api/values
         public IEnumerable<string> Get()
         {

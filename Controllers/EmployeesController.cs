@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using WebAPIProjectDemo.Models;
@@ -64,9 +65,12 @@ namespace WebAPIProjectDemo.Controllers
         /// </remarks>
         /// <returns></returns>
         // GET api/<controller>/id
+        [BasicAuthentication]
         [HttpGet]
         public HttpResponseMessage GetEmployeeByID(int id)
         {
+            string username = Thread.CurrentPrincipal.Identity.Name;
+
             var entity = entities.employees.FirstOrDefault(e => e.emp_id == id);
             if (entity != null)
             {

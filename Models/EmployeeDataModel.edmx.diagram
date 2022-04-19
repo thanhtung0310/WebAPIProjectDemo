@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="a7111fa899db4923b8c4a2b1490f32ab" Name="Diagram1">
         <EntityTypeShape EntityType="VMO_HotelManagementModel.employee" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VMO_HotelManagementModel.account" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

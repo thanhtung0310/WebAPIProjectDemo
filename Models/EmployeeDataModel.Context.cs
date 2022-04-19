@@ -26,5 +26,6 @@ namespace WebAPIProjectDemo.Models
         }
     
         public virtual DbSet<employee> employees { get; set; }
+        public virtual DbSet<account> accounts { get; set; }
     }
 }

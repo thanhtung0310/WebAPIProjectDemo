@@ -26,6 +26,8 @@ namespace WebAPIProjectDemo
             //EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*"); // * means all value
             config.EnableCors();
 
+            config.Filters.Add(new RequireHttpsAttribute());
+
 
             // using jsonp to share resources
             //var jsonpFormatter = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);

@@ -4,7 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="VMO_HotelManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="VMO_HotelManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="acc_id" />
+          </Key>
+          <Property Name="acc_id" Type="int" Nullable="false" />
+          <Property Name="emp_id" Type="int" />
+          <Property Name="acc_username" Type="varchar" MaxLength="50" />
+          <Property Name="acc_password" Type="varchar" MaxLength="50" />
+          <Property Name="role_id" Type="int" />
+        </EntityType>
         <EntityType Name="employee">
           <Key>
             <PropertyRef Name="emp_id" />
@@ -16,10 +26,10 @@
           <Property Name="emp_contact_number" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="VMO_HotelManagementModelStoreContainer">
+          <EntitySet Name="account" EntityType="Self.account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="VMO_HotelManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -35,7 +45,18 @@
         </EntityType>
         <EntityContainer Name="EmployeeDBContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="employees" EntityType="Self.employee" />
+          <EntitySet Name="accounts" EntityType="VMO_HotelManagementModel.account" />
         </EntityContainer>
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="acc_id" />
+          </Key>
+          <Property Name="acc_id" Type="Int32" Nullable="false" />
+          <Property Name="emp_id" Type="Int32" />
+          <Property Name="acc_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="acc_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="role_id" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -50,6 +71,17 @@
                 <ScalarProperty Name="emp_position" ColumnName="emp_position" />
                 <ScalarProperty Name="emp_dob" ColumnName="emp_dob" />
                 <ScalarProperty Name="emp_contact_number" ColumnName="emp_contact_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="accounts">
+            <EntityTypeMapping TypeName="VMO_HotelManagementModel.account">
+              <MappingFragment StoreEntitySet="account">
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="acc_password" ColumnName="acc_password" />
+                <ScalarProperty Name="acc_username" ColumnName="acc_username" />
+                <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+                <ScalarProperty Name="acc_id" ColumnName="acc_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

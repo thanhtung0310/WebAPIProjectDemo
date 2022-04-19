@@ -4,10 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using WebAPIProjectDemo.Models;
 
 namespace WebAPIProjectDemo.Controllers
 {
+    [EnableCorsAttribute("*", "*", "*")]
     public class EmployeesController : ApiController
     {
         private EmployeeDBContext entities = new EmployeeDBContext();
@@ -110,6 +112,7 @@ namespace WebAPIProjectDemo.Controllers
         /// </remarks>
         /// <returns></returns>
         // PUT api/<controller>/{id}
+        [DisableCors]
         [HttpPut]
         public HttpResponseMessage UpdateEmployeeByID(int id, [FromBody] employee employee)
         {
@@ -146,6 +149,7 @@ namespace WebAPIProjectDemo.Controllers
         /// </remarks>
         /// <returns></returns>
         // DELETE api/<controller>/{id}
+        [DisableCors]
         [HttpDelete]
         public HttpResponseMessage DeleteEmployeeByID(int id)
         {

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
+using WebApiContrib.Formatting.Jsonp;
 
 namespace WebAPIProjectDemo
 {
@@ -19,6 +21,15 @@ namespace WebAPIProjectDemo
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            // using cors to share resources
+            //EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*"); // * means all value
+            config.EnableCors();
+
+
+            // using jsonp to share resources
+            //var jsonpFormatter = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
+            //config.Formatters.Insert(0, jsonpFormatter);
         }
     }
 }

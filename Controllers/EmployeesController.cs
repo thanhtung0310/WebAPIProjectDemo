@@ -65,12 +65,9 @@ namespace WebAPIProjectDemo.Controllers
         /// </remarks>
         /// <returns></returns>
         // GET api/<controller>/id
-        [BasicAuthentication]
         [HttpGet]
         public HttpResponseMessage GetEmployeeByID(int id)
         {
-            string username = Thread.CurrentPrincipal.Identity.Name;
-
             var entity = entities.employees.FirstOrDefault(e => e.emp_id == id);
             if (entity != null)
             {
